@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.EmpDao">
+    <select id="queryAll" resultType="Employee">
+  	 	select  * from employee ;
+  	 </select>
+    <select id="findb" resultType="Employee">
+  	 	select  * from employee limit #{begin},#{currentcount};
+  	 </select>
+    <select id="find" resultType="int">
+  	 	select  count(*) from employee;
+  	 </select>
+    <insert id="insert">
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
+
+        insert into employee(name,salary,age) values(#{name},#{salary},#{age})
+    </insert>
+    <delete id="delete">
+  	 	delete from employee where id=#{id}
+  	 </delete>
+    <update id="update">
+  	 	update employee set name=#{name},salary=#{salary},age=#{age} where id=#{id}
+  	 </update>
+</mapper>
