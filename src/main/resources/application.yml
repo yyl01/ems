@@ -1,0 +1,10 @@
+server:
+  context-path: /ems
+  port: 8989
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql//192.168.0.115
+    username: root
+    password: 123
+    driver-class-name: com.mysql.jdbc.Driver
